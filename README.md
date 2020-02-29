@@ -4,4 +4,4 @@ Timer is a simple countdown app fully build with react native. On the app, you c
 
 You can download the lastest APK build here:
 
-![App print](https://i.ibb.co/82NsYq9/Print.png =250x)
+![App print](https://i.ibb.co/82NsYq9/Print.png width="100")
