@@ -1,4 +1,7 @@
-# react-native-timer
-A simple timer app build with React Native
+<img src="https://i.ibb.co/82NsYq9/Print.png" alt="App print" height="400" align="left"/>
 
-![App print](https://i.ibb.co/82NsYq9/Print.png)
+# react-native-timer
+
+Timer is a simple countdown app fully build with react native. On the app, you can add, remove and run timers. 
+
+You can download the lastest APK build here:
