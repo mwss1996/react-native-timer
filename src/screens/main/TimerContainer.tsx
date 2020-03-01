@@ -92,6 +92,21 @@ export class TimerContainer extends React.Component<
 				timesup: false
 			});
 		}
+		const remainingSeconds =
+			this.state.hours * 60 * 60 +
+			this.state.minutes * 60 +
+			this.state.seconds;
+		if (
+			this.props.currentTimer &&
+			this.state.isRunning &&
+			remainingSeconds === 0 &&
+			this.state.timesup === false
+		) {
+			TrackPlayer.play();
+			this.setState({
+				timesup: true
+			});
+		}
 	}
 	tick() {
 		if (this.state.isRunning && !this.timeout) {
@@ -153,17 +168,6 @@ export class TimerContainer extends React.Component<
 			this.state.hours * 60 * 60 +
 			this.state.minutes * 60 +
 			this.state.seconds;
-		if (
-			this.props.currentTimer &&
-			this.state.isRunning &&
-			remainingSeconds === 0 &&
-			this.state.timesup === false
-		) {
-			TrackPlayer.play();
-			this.setState({
-				timesup: true
-			});
-		}
 		return (
 			<View>
 				<Message message={this.prepareMessage(remainingSeconds)} />
