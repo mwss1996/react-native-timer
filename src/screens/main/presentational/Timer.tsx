@@ -55,8 +55,7 @@ const styles = StyleSheet.create({
 interface TimerProps {
 	alertOne: boolean;
 	alertTwo: boolean;
-	minutes: number;
-	seconds: number;
+	time: string;
 	isRunning: boolean;
 	enablePlayButton: boolean;
 	onPressPlayButton: () => void;
@@ -86,6 +85,7 @@ export function Timer(props: TimerProps) {
 		<View style={styles.container}>
 			<View style={styles.timerRow}>
 				<AnimatedText
+					testID="time"
 					style={[
 						styles.timer,
 						props.alertTwo
@@ -98,13 +98,14 @@ export function Timer(props: TimerProps) {
 					]}
 					fontWeight="bold"
 				>
-					{appendLeadingZeros(props.minutes, 2) +
-						":" +
-						appendLeadingZeros(props.seconds, 2)}
+					{props.time}
 				</AnimatedText>
 				<View style={styles.buttons}>
 					{props.enablePlayButton && (
-						<Touchable onPress={props.onPressPlayButton}>
+						<Touchable
+							testID="playButton"
+							onPress={props.onPressPlayButton}
+						>
 							<View style={styles.playButtonContainer}>
 								<Icon
 									style={styles.playButtonIcon}
@@ -113,7 +114,10 @@ export function Timer(props: TimerProps) {
 							</View>
 						</Touchable>
 					)}
-					<Touchable onPress={props.onPressResetButoon}>
+					<Touchable
+						testID="resetButton"
+						onPress={props.onPressResetButoon}
+					>
 						<View style={styles.resetButtonContainer}>
 							<Icon
 								style={styles.resetButtonIcon}

@@ -9,6 +9,7 @@ import { HistoryRow } from "./presentational/HistoryRow";
 import { Main } from "./presentational/Main";
 import { TimerContainer } from "./TimerContainer";
 import { findLatestTimer, sortTimers } from "../../store/utils/timersFunctions";
+import { appendLeadingZeros } from "../../store/utils/helperFunctions";
 
 interface MainContainerProps {
 	timers: StoreStateType["timers"];
@@ -52,7 +53,10 @@ class MainContainer extends React.Component<
 					this.state.currentTimer.id
 				))
 		) {
-			this.setState({ setLatestTimer: true });
+			this.setState({
+				currentTimer: null,
+				setLatestTimer: true
+			});
 		}
 	}
 	render() {
@@ -60,9 +64,11 @@ class MainContainer extends React.Component<
 			<HistoryRow
 				key={timer.id}
 				date={timer.dateTime}
-				hours={timer.hours}
-				minutes={timer.minutes}
-				seconds={timer.seconds}
+				time={
+					appendLeadingZeros(timer.minutes, 2) +
+					":" +
+					appendLeadingZeros(timer.seconds, 2)
+				}
 				onPressRemoveButton={() =>
 					this.props.dispatch(deleteTimer(timer.id))
 				}

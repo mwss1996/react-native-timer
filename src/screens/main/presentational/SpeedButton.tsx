@@ -30,7 +30,7 @@ interface SpeedButtonProps {
 }
 export function SpeedButton(props: SpeedButtonProps) {
 	return (
-		<Touchable onPress={props.onClick}>
+		<Touchable testID="button" onPress={props.onClick}>
 			<View
 				style={[
 					styles.container,
@@ -40,7 +40,7 @@ export function SpeedButton(props: SpeedButtonProps) {
 						: {}
 				]}
 			>
-				<Text fontWeight="bold" style={styles.label}>
+				<Text testID="label" fontWeight="bold" style={styles.label}>
 					{props.label}
 				</Text>
 			</View>

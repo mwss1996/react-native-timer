@@ -51,6 +51,7 @@ export function Input(props: InputProps) {
 			</Text>
 			<View style={styles.inputContainer}>
 				<TextInput
+					testID="textInput"
 					style={styles.input}
 					keyboardType={"numeric"}
 					onSubmitEditing={props.onPressSetTime}
@@ -60,6 +61,7 @@ export function Input(props: InputProps) {
 					onChangeText={props.onTextInputValueChange}
 				/>
 				<Touchable
+					testID="button"
 					onPress={
 						props.enableSetTime ? props.onPressSetTime : () => {}
 					}

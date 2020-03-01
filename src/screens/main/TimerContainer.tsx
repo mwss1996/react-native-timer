@@ -6,6 +6,7 @@ import { SpeedButton } from "./presentational/SpeedButton";
 import { SpeedButtons } from "./presentational/SpeedButtons";
 import { Timer } from "./presentational/Timer";
 import TrackPlayer from "react-native-track-player";
+import { appendLeadingZeros } from "../../store/utils/helperFunctions";
 
 TrackPlayer.setupPlayer().then(async () => {
 	await TrackPlayer.add({
@@ -172,8 +173,11 @@ export class TimerContainer extends React.Component<
 						remainingSeconds <= 20
 					}
 					alertTwo={remainingSeconds <= 10 && remainingSeconds > 0}
-					minutes={this.state.minutes}
-					seconds={this.state.seconds}
+					time={
+						appendLeadingZeros(this.state.minutes, 2) +
+						":" +
+						appendLeadingZeros(this.state.seconds, 2)
+					}
 					isRunning={this.state.isRunning}
 					enablePlayButton={remainingSeconds !== 0}
 					onPressPlayButton={() =>

@@ -37,9 +37,7 @@ const styles = StyleSheet.create({
 	}
 });
 interface HistoryRowProps {
-	hours: number;
-	minutes: number;
-	seconds: number;
+	time: string;
 	date: Date;
 	onPressRemoveButton: () => void;
 	onPressTimer: () => void;
@@ -47,19 +45,20 @@ interface HistoryRowProps {
 export function HistoryRow(props: HistoryRowProps) {
 	return (
 		<View style={styles.container}>
-			<Touchable onPress={props.onPressTimer}>
+			<Touchable testID="timerButton" onPress={props.onPressTimer}>
 				<View style={styles.leftColumn}>
-					<Text style={styles.time} fontWeight="medium">
-						{appendLeadingZeros(props.minutes, 2) +
-							":" +
-							appendLeadingZeros(props.seconds, 2)}
+					<Text testID="time" style={styles.time} fontWeight="medium">
+						{props.time}
 					</Text>
 					<Text style={styles.date} fontWeight="medium">
 						Created on {props.date.toDateString()}
 					</Text>
 				</View>
 			</Touchable>
-			<Touchable onPress={props.onPressRemoveButton}>
+			<Touchable
+				testID="removeButton"
+				onPress={props.onPressRemoveButton}
+			>
 				<View style={styles.removeButton}>
 					<Icon style={styles.removeButtonIcon} name={"trash"} />
 				</View>

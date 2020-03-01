@@ -16,7 +16,7 @@ interface MessageProps {
 }
 export function Message(props: MessageProps) {
 	return (
-		<Text style={styles.container} fontWeight="bold">
+		<Text testID="message" style={styles.container} fontWeight="bold">
 			{props.message}
 		</Text>
 	);
